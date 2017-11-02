@@ -1,18 +1,14 @@
 apply plugin: 'com.android.library'
-
+//apply plugin: 'com.jakewharton.butterknife'
 android {
     compileSdkVersion 26
-
-
 
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
 
     buildTypes {
@@ -35,4 +31,10 @@ dependencies {
     //字体图标
     api 'com.joanzapata.iconify:android-iconify-ionicons:2.2.2'//采用implementation为本module可用，依赖该module的其他module不可用，同compiler
     api 'com.joanzapata.iconify:android-iconify-fontawesome:2.2.2'
+    //fragment依赖
+    api 'me.yokeyword:fragmentation:1.1.7'
+    api 'me.yokeyword:fragmentation-swipeback:1.1.7'
+    //ButterKnife依赖
+    api 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
 }
