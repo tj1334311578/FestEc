@@ -3,21 +3,35 @@ package com.diabin.latte.app;
 import android.content.Context;
 
 import java.util.HashMap;
-//import java.util.WeakHashMap;
 
 /**
  * Created by Administrator on 2017/11/1 0001.
  */
 
 public final class Latte {
+
     public static Configurator init(Context context){
-        getConfigurator().put(ConfigType.APPLICATION_CONTEXT.name(),context.getApplicationContext());
+        getConfigrations().put(ConfigKeys.APPLICATION_CONTEXT.name(),context.getApplicationContext());
         return Configurator.getInstance();
     }
-    private static HashMap<String,Object> getConfigurator(){
+
+    public  static HashMap<String,Object> getConfigrations(){
         return Configurator.getInstance().getLatteConfigs();
     }
+
     public static Context getApplication(){
-        return (Context) getConfigurator().get(ConfigType.APPLICATION_CONTEXT.name());
+        return (Context) getConfigrations().get(ConfigKeys.APPLICATION_CONTEXT.name());
+    }
+
+
+    public static Configurator getConfigurator() {
+        return Configurator.getInstance();
+    }
+
+    public static <T> T getConfiguration(Object key) {
+        return getConfigurator().getConfiguration(key);
+    }
+    public static Context getApplicationContext() {
+        return getConfiguration(ConfigKeys.APPLICATION_CONTEXT);
     }
 }
